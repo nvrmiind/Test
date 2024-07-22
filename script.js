@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     const videos = document.querySelectorAll('.video');
     const videoContainer = document.getElementById('video-container');
+    const overlay = document.getElementById('overlay');
+    const fullscreenButton = document.getElementById('fullscreen-button');
 
     function requestFullscreen(element) {
         if (element.requestFullscreen) {
@@ -33,6 +35,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 
-    // Request fullscreen on page load
-    requestFullscreen(videoContainer);
+    fullscreenButton.addEventListener('click', () => {
+        requestFullscreen(videoContainer);
+        overlay.style.display = 'none';
+        playVideo(0); // Play the first video by default or you can modify as needed
+    });
 });
